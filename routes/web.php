@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PersilanganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,36 @@ Route::post('regis', [LoginController::class, 'prosreg']);
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    // Persilangan
+    Route::get('persilangan', [PersilanganController::class, 'index'])->name('persilangan');
+    Route::get('persilangan/tambah', [PersilanganController::class, 'create']);
+    Route::post('persilangan/add', [PersilanganController::class, 'add']);
+    Route::get('persilangan/edit/{id}', [PersilanganController::class, 'edit']);
+    Route::post('persilangan/update/{id}', [PersilanganController::class, 'update']);
+    Route::get('persilangan/destroy/{id}', [PersilanganController::class, 'destroy']);
+
+    // Tanaman
+
+    // Gen
+
+    // proses kebun
+
+    // panen kebun
+
+    // trans 1
+
+    // trans 2
+
+    // trans 3
+
+    // pegawai
+
+    // inventory
+
+    // penggajian
+
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 });
