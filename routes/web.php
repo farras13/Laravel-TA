@@ -54,6 +54,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('pegawai/edit/{id}', [PegawaiController::class, 'edit']);
     Route::post('pegawai/update/{id}', [PegawaiController::class, 'update']);
     Route::get('pegawai/destroy/{id}', [PegawaiController::class, 'destroy']);
+
+    //akun
+    Route::get('akun', [PegawaiController::class, 'akun'])->name('akun');
+    Route::get('akun/tambah', [PegawaiController::class, 'create']);
+    Route::get('akun/edit/{id}', [PegawaiController::class, 'editAkun']);
+    Route::post('akun/update/{id}', [PegawaiController::class, 'updateAkun']);
+    Route::get('akun/destroy/{id}', [PegawaiController::class, 'destroy']);
+
     // inventory
 
     // penggajian

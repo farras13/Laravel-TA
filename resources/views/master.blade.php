@@ -56,7 +56,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{ route('pegawai') }}">Data Pegawai</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Gaji</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Akun</a>
+                                    <a class="nav-link" href="{{ route('akun') }}">Akun</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PegawaiController extends Controller
 {
@@ -62,5 +63,36 @@ class PegawaiController extends Controller
         User::find($id)->delete();
         return redirect()->route('pegawai')
             ->with('success', 'Data Berhasil Dihapus');
+    }
+
+    public function akun()
+    {
+        $data = User::all();
+        return view('pegawai.akun', compact('data'));
+    }
+    public function createAkun()
+    {
+        return view('login.register');
+    }
+    public function editAkun($id)
+    {
+        $val = User::find($id);
+        return view('pegawai.editAkun',compact('val'));
+    }
+
+    public function updateAkun(Request $request, $id)
+    {
+        $request->validate([
+            'username'                  => 'required',
+            'password'                    => 'required',
+        ]);
+        $data = [
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+        ];
+        User::find($id)->update($data);
+        return redirect()->route('akun')
+                        ->with('success','Product updated successfully');
     }
 }
