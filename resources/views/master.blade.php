@@ -54,7 +54,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Data Pegawai</a>
+                                    <a class="nav-link" href="{{ route('pegawai') }}">Data Pegawai</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Gaji</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Akun</a>
                                 </nav>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PersilanganController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +49,11 @@ Route::group(['middleware' => 'auth'], function () {
     // trans 3
 
     // pegawai
-
+    Route::get('pegawai', [PegawaiController::class, 'index'])->name('pegawai');
+    Route::get('pegawai/tambah', [PegawaiController::class, 'create']);
+    Route::get('pegawai/edit/{id}', [PegawaiController::class, 'edit']);
+    Route::post('pegawai/update/{id}', [PegawaiController::class, 'update']);
+    Route::get('pegawai/destroy/{id}', [PegawaiController::class, 'destroy']);
     // inventory
 
     // penggajian
