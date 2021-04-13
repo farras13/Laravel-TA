@@ -72,7 +72,7 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Gen</a>
+                                            <a class="nav-link" href="{{ route('gen') }}">Gen</a>
                                             <a class="nav-link" href="register.html">Gudang</a>
                                             <a class="nav-link" href="register.html">Hasil Kebun</a>
                                         </nav>

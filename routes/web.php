@@ -37,6 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
     // Tanaman
 
     // Gen
+    Route::get('gen', [HomeController::class, 'gen'])->name('gen');
+    Route::get('gen/tambah', [HomeController::class, 'create']);
+    Route::post('gen/add', [HomeController::class, 'add']);
+    Route::get('gen/edit/{id}', [HomeController::class, 'edit']);
+    Route::post('gen/update/{id}', [HomeController::class, 'update']);
+    Route::get('gen/destroy/{id}', [HomeController::class, 'destroy']);
 
     // proses kebun
 
