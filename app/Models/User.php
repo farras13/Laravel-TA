@@ -36,4 +36,19 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function persilangan()
+    {
+        return $this->hasOne('App\Models\persilangan');
+    }
+
+    public function panen()
+    {
+        return $this->hasOne('App\Models\panen');
+    }
+
+    public function proses()
+    {
+        return $this->hasOne('App\Models\proses');
+    }
 }

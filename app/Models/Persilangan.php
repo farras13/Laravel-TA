@@ -15,6 +15,11 @@ class Persilangan extends Model
         'tanggal',
         'seed',
         'pollen',
+        'status_pk',
+        'status_pb',
+        'status_trans',
+        'status_trans2',
+        'status_trans3',
         'idAuth',
     ];
 
@@ -28,4 +33,13 @@ class Persilangan extends Model
         return $this->belongsTo('App\Models\tanaman', 'pollen');
     }
 
+    public function panen()
+    {
+        return $this->hasOne('App\Models\panen');
+    }
+
+    public function proses()
+    {
+        return $this->hasOne('App\Models\proses');
+    }
 }

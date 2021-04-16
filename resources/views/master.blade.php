@@ -101,8 +101,8 @@
                             </a>
                             <div class="collapse" id="kebun" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Proses Buah</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Panen Buah</a>
+                                    <a class="nav-link" href="{{ route('proses') }}">Proses Buah</a>
+                                    <a class="nav-link" href="{{ route('panen') }}">Panen Buah</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#lab" aria-expanded="false" aria-controls="collapseLayouts">

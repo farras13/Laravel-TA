@@ -31,7 +31,7 @@ class PegawaiController extends Controller
             'lahir'                 => 'required',
             'jk'                    => 'required',
             'alamat'                => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto'                  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // $input = $request->all();
@@ -40,22 +40,27 @@ class PegawaiController extends Controller
             $destinationPath = 'apalah/image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['foto'] = "$profileImage";
+            $data = [
+                'name' => $request->name,
+                'lahir' => $request->lahir,
+                'jk' => $request->jk,
+                'hp' => $request->hp,
+                'alamat' => $request->alamat,
+                'foto' =>  $profileImage,
+            ];
         }else{
-            unset($input['foto']);
+            $data = [
+                'name' => $request->name,
+                'lahir' => $request->lahir,
+                'jk' => $request->jk,
+                'hp' => $request->hp,
+                'alamat' => $request->alamat
+            ];
         }
 
-        $data = [
-            'name' => $request->name,
-            'lahir' => $request->lahir,
-            'jk' => $request->jk,
-            'hp' => $request->hp,
-            'alamat' => $request->alamat,
-            'foto' =>  $profileImage,
-        ];
         User::find($id)->update($data);
         return redirect()->route('pegawai')
-                        ->with('success','Product updated successfully');
+                        ->with('success','Data Pegawai updated successfully');
     }
     public function destroy($id)
     {

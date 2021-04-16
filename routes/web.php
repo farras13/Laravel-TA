@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KebunController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PersilanganController;
@@ -45,9 +46,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('gen/destroy/{id}', [HomeController::class, 'destroy']);
 
     // proses kebun
-
+    Route::get('kebun/proses', [KebunController::class, 'index'])->name('proses');
+    Route::get('kebun/proses/tambah', [KebunController::class, 'create']);
+    Route::post('kebun/proses/add', [KebunController::class, 'add']);
+    Route::get('kebun/proses/edit/{id}', [KebunController::class, 'edit']);
+    Route::post('kebun/proses/update/{id}', [KebunController::class, 'update']);
+    Route::get('kebun/proses/destroy/{id}', [KebunController::class, 'destroy']);
+    
     // panen kebun
-
+    Route::get('kebun/panen', [KebunController::class, 'panen'])->name('panen');
+    Route::get('kebun/panen/tambah', [KebunController::class, 'createP']);
+    Route::post('kebun/panen/add', [KebunController::class, 'addP']);
+    Route::get('kebun/panen/edit/{id}', [KebunController::class, 'editP']);
+    Route::post('kebun/panen/update/{id}', [KebunController::class, 'updateP']);
+    Route::get('kebun/panen/destroy/{id}', [KebunController::class, 'destroyP']);
     // trans 1
 
     // trans 2
