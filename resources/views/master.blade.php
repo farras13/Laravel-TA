@@ -112,9 +112,9 @@
                             </a>
                             <div class="collapse" id="lab" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Trans 1</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Trans 2</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Trans 3</a>
+                                    <a class="nav-link" href="{{ route('trans') }}">Trans 1</a>
+                                    <a class="nav-link" href="{{ route('trans2') }}">Trans 2</a>
+                                    <a class="nav-link" href="{{ route('trans3') }}">Trans 3</a>
                                 </nav>
                             </div>
                         </div>
