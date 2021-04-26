@@ -1,15 +1,15 @@
 @extends('master')
 @section('content')
     <div class="container-fluid">
-        <h1 class="mt-4">Lab - Trans</h1>
+        <h1 class="mt-4">Lab - Trans 2</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Lab</li>
-            <li class="breadcrumb-item active"><a href="index.html">trans</a></li>
+            <li class="breadcrumb-item active"><a href="{{ url('trans2') }}">trans2</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
-                <a class="btn btn-success float-right" href="{{ url('trans/tambah') }}">Tambah</a>
+                <a class="btn btn-success float-right" href="{{ url('trans2/tambah') }}">Tambah</a>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
@@ -37,7 +37,7 @@
                                     <td> {{ $d->id_pt2 }} </td>
                                     <td> <?php $awal = substr("" . $d->id_persilangan, 0, 1); $teng = substr("" . $d->id_persilangan, 1, 2); $khir= substr("" . $d->id_persilangan, 3); ?>
                                           {{$awal.'-'.$teng.'-'.$khir }}
-                                    </td>           
+                                    </td>
                                     <td>{{ $d->persilangan->tanaman['name'].' x '.$d->persilangan->tanamann['name']}}</td>
                                     <td>    @if($d->status == 1)
                                                 Berhasil

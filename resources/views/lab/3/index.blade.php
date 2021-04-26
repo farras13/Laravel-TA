@@ -1,11 +1,11 @@
 @extends('master')
 @section('content')
     <div class="container-fluid">
-        <h1 class="mt-4">Lab - Trans</h1>
+        <h1 class="mt-4">Lab - Trans 3</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Lab</li>
-            <li class="breadcrumb-item active"><a href="index.html">trans</a></li>
+            <li class="breadcrumb-item active"><a href="{{ url('trans3') }}">trans3</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">

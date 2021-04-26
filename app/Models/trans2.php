@@ -13,7 +13,7 @@ class trans2 extends Model
     protected $fillable = [
         'id_persilangan',
         'idAuth',
-        'tanggal_pengerjaan',
+        'tgl_pengerjaan',
         'jumlah_botol',
         'qty',
         'status',

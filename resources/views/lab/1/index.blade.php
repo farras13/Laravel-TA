@@ -3,9 +3,9 @@
     <div class="container-fluid">
         <h1 class="mt-4">Lab - Trans</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
             <li class="breadcrumb-item">Lab</li>
-            <li class="breadcrumb-item active"><a href="index.html">trans</a></li>
+            <li class="breadcrumb-item active"><a href="{{ url('trans') }}">trans</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
@@ -25,9 +25,10 @@
                                 <th>Id</th>
                                 <th>Kode</th>
                                 <th>Persilangan</th>
-                                <th>status</th>
-                                <th>keterangan</th>
-                                <th>penanggung jawab</th>
+                                <th>Jumlah</th>
+                                <th>Status</th>
+                                <th>Keterangan</th>
+                                <th>Author</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -39,6 +40,7 @@
                                           {{$awal.'-'.$teng.'-'.$khir }}
                                     </td>
                                     <td>{{ $d->persilangan->tanaman['name'].' x '.$d->persilangan->tanamann['name']}}</td>
+                                    <td>{{ $d->jumlah_botol }} </td>
                                     <td>    @if($d->status == 1)
                                                 Berhasil
                                             @else

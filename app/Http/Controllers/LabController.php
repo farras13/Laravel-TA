@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gen;
 use App\Models\Persilangan;
 use App\Models\trans;
 use App\Models\trans2;
@@ -56,15 +57,16 @@ class LabController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'status' => 'required',
+            'status' => 'required'
         ]);
         $data = [
             'status' => $request->status,
+            'jumlah_botol' => $request->jb,
             'keterangan' => $request->ket
         ];
 
         trans::find($id)->update($data);
-        $edit = ['status_pt' => $request->status, ];
+        $edit = ['status_trans' => $request->status, ];
         $core =  trans::find($id);
         Persilangan::find($core->idPersilangan)->update($edit);
 
@@ -76,7 +78,7 @@ class LabController extends Controller
     {
         $core =  trans::find($id)->first();
         trans::find($id)->delete();
-        $edit = ['status_pk' => 0, ];
+        $edit = ['status_trans' => 0, 'status_trans2' => 0, 'status_trans3' => 0,];
         Persilangan::find($core->idPersilangan)->update($edit);
         return redirect()->route('trans')
             ->with('success', 'Data Berhasil Dihapus');
@@ -89,7 +91,9 @@ class LabController extends Controller
     public function create2()
     {
         $silang = Persilangan::all();
-        return view('trans.2.create', compact('silang'));
+        $trans = trans::orderBy('idPersilangan', 'desc')->get();
+        $gen = Gen::all();
+        return view('lab.2.create', compact('silang', 'gen', 'trans'));
     }
 
     public function add2(Request $request)
@@ -108,7 +112,13 @@ class LabController extends Controller
             'tgl_pengerjaan' => $request->tgl,
         ]);
 
-        $edit = ['status_trans2' => $request->status, ];
+        $edit = [
+            'status_trans2' => $request->status,
+            'calon_kode' => $request->kt,
+            'calon_nama' => $request->nt,
+            'calon_gen' => $request->gt,
+            'calon_jk' => $request->jk,
+        ];
         $id = $request->persilangan;
         Persilangan::find($id)->update($edit);
 
@@ -118,8 +128,9 @@ class LabController extends Controller
 
     public function edit2($id)
     {
+        $gen = Gen::all();
         $data = trans2::find($id);
-        return view('lab.2.edit', compact('data'));
+        return view('lab.2.edit', compact('data', 'gen'));
     }
 
     public function update2(Request $request, $id)
@@ -129,11 +140,18 @@ class LabController extends Controller
         ]);
         $data = [
             'status' => $request->status,
+            'jumlah_botol' => $request->jb,
             'keterangan' => $request->ket
         ];
 
         trans2::find($id)->update($data);
-        $edit = ['status_pt2' => $request->status, ];
+        $edit = [
+            'status_trans2' => $request->status,
+            'calon_kode' => $request->kt,
+            'calon_nama' => $request->nt,
+            'calon_gen' => $request->gt,
+            'calon_jk' => $request->jk,
+        ];
         $core =  trans2::find($id);
         Persilangan::find($core->id_persilangan)->update($edit);
 
@@ -145,7 +163,7 @@ class LabController extends Controller
     {
         $core =  trans2::find($id);
         trans2::find($id)->delete();
-        $edit = ['status_pk2' => 0, ];
+        $edit = ['status_trans2' => 0, 'status_trans3' => 0,];
         Persilangan::find($core->id_persilangan)->update($edit);
         return redirect()->route('trans2')
             ->with('success', 'Data Berhasil Dihapus');
@@ -180,7 +198,7 @@ class LabController extends Controller
             'tgl_pengerjaan' => $request->tgl,
         ]);
 
-        $edit = ['status_trans2' => $request->status, ];
+        $edit = ['status_trans3' => $request->status, ];
         $id = $request->persilangan;
         Persilangan::find($id)->update($edit);
 
@@ -201,11 +219,15 @@ class LabController extends Controller
         ]);
         $data = [
             'status' => $request->status,
+            'target' => $request->target,
+            'botolT2' => $request->jb,
+            'stok' => $request->stok,
+            'kontam' => $request->kontam,
             'keterangan' => $request->ket
         ];
 
         trans3::find($id)->update($data);
-        $edit = ['status_pt3' => $request->status, ];
+        $edit = ['status_trans3' => $request->status, ];
         $core =  trans3::find($id);
         Persilangan::find($core->id_persilangan)->update($edit);
 
@@ -217,9 +239,9 @@ class LabController extends Controller
     {
         trans3::find($id)->delete();
         $core =  trans3::find($id);
-        $edit = ['status_pk3' => 0, ];
+        $edit = ['status_trans3' => 0,];
         Persilangan::find($core->id_persilangan)->update($edit);
-        return redirect()->route('trans')
+        return redirect()->route('trans3')
             ->with('success', 'Data Berhasil Dihapus');
     }
 }

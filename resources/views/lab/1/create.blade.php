@@ -1,12 +1,12 @@
 @extends('master')
-@section('titel') Form Proses Buah @endsection
+@section('titel') Form Lab @endsection
 @section('content')
 <div class="container-fluid">
-    <h1 class="mt-4">Panen Buah</h1>
+    <h1 class="mt-4">Trans 1</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('panen') }}">Panen Buah</a></li>
-        <li class="breadcrumb-item active">Form-Proses</li>
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('trans') }}">trans</a></li>
+        <li class="breadcrumb-item active">Form-trans</li>
     </ol>
     <div class="card mb-4">
         <div class="card-body">
@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="jb">Jumlah Botol</label>
-                    <input type="numb e" name="jb" id="jb" class="form-control" min="0">
+                    <input type="number" name="jb" id="jb" class="form-control" min="0">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="status">status</label>

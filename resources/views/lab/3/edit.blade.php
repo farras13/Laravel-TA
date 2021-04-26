@@ -1,12 +1,12 @@
 @extends('master')
-@section('titel') Form Proses Buah @endsection
+@section('titel') Form Edit Lab @endsection
 @section('content')
 <div class="container-fluid">
-    <h1 class="mt-4">Proses Buah</h1>
+    <h1 class="mt-4">Trans 3</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('proses') }}">Proses Buah</a></li>
-        <li class="breadcrumb-item active">Form-Proses</li>
+        <li class="breadcrumb-item"><a href="{{ route('trans3') }}">Trans3</a></li>
+        <li class="breadcrumb-item active">Form-Trans3</li>
     </ol>
     <div class="card mb-4">
         <div class="card-body">
@@ -25,6 +25,22 @@
                 <div class="col-md-12 mb-3">
                     <label for="tgl">tanggal</label>
                     <input type="date" name="tgl" id="tgl" class="form-control" value="{{ $data->tanggal_input }}" readonly>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="target">Target</label>
+                    <input type="number" name="target" id="target" class="form-control" min="0" value="{{ $data->target }}">
+                </div>
+                <div class="col-md-12 mb-3">
+                    <label for="jb">Jumlah Botol </label>
+                    <input type="number" name="jb" id="jb" class="form-control" min="0" value="{{ $data->botolT2 }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="stok">Stok</label>
+                    <input type="number" name="stok" id="stok" class="form-control" min="0" value="{{ $data->stok }}">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="kontam">kontam</label>
+                    <input type="number" name="kontam" id="kontam" class="form-control" min="0" value="{{ $data->kontam }}">
                 </div>
                 <div class="col-md-12 mb-3">
                     <label for="status">status</label>

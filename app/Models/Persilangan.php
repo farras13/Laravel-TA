@@ -20,6 +20,10 @@ class Persilangan extends Model
         'status_trans',
         'status_trans2',
         'status_trans3',
+        'calon_kode',
+        'calon_nama',
+        'calon_gen',
+        'calon_jk',
         'idAuth',
     ];
 
