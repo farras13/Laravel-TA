@@ -1,14 +1,15 @@
 @extends('master')
 @section('content')
     <div class="container-fluid">
-        <h1 class="mt-4">Static Navigation</h1>
+        <h1 class="mt-4">Tabel Akun</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-            <li class="breadcrumb-item active">Static Navigation</li>
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Dashboard</a></li>
+            <li class="breadcrumb-item">Pegawai</li>
+            <li class="breadcrumb-item active"><a href="{{ url('akun') }}">Data Akun</a></li>
         </ol>
         <div class="card mb-4">
             <div class="card-header">
-                <a class="btn btn-success float-right" href="{{ url('pegawai/tambah') }}">Tambah</a>
+                {{-- <a class="btn btn-success float-right" href="{{ url('pegawai/tambah') }}">Tambah</a> --}}
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))

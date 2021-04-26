@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-</head>
-<body>
-    <div class="container">
-        <div class="col-md-4 offset-md-4 mt-5">
+@extends('master')
+@section('content')
+        <div class="container-fluid"><br>
             <div class="card">
                 <div class="card-header">
                     <h3 class="text-center">Form Register</h3>
                 </div>
-                <form action="{{ route('register') }}" method="post">
+                <form action="{{ route('register') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="card-body">
                     @if(session('errors'))
@@ -74,14 +65,16 @@
                             <option value="1">Lab</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="foto"><strong>Foto</strong></label>
+                        <input type="file" name="foto" id="foto" class="form-control">
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
-                    <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Login</a> sekarang!</p>
+                    {{-- <p class="text-center">Sudah punya akun? <a href="{{ route('login') }}">Login</a> sekarang!</p> --}}
                 </div>
                 </form>
             </div>
         </div>
-    </div>
-</body>
-</html>
+@endsection

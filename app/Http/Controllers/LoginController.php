@@ -73,7 +73,8 @@ class LoginController extends Controller
             'lahir'                 => 'required',
             'jk'                    => 'required',
             'alamat'                => 'required',
-            'role'                  => 'required'
+            'role'                  => 'required',
+            'foto'                  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         $messages = [
@@ -89,8 +90,8 @@ class LoginController extends Controller
             'lahir.required'        => 'Tanggal lahir wajib diisi',
             'hp.required'           => 'No.HP wajib diisi',
             'alamat.required'       => 'Alamat wajib diisi',
-            'role.required'       => 'Tentukan rolenya'
-
+            'role.required'         => 'Tentukan rolenya',
+            'foto.max'              => 'file anda terlalu besar'
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -100,21 +101,40 @@ class LoginController extends Controller
         }
 
         $user = new User();
-        $user->name = ucwords(strtolower($request->name));
-        $user->username = strtolower($request->username);
-        $user->password = Hash::make($request->password);
-        $user->lahir = $request->lahir;
-        $user->jk = strtolower($request->jk);
-        $user->alamat = $request->alamat;
-        $user->hp = strtolower($request->hp);
-        $user->role = strtolower($request->role);
 
+
+        if ($image = $request->file('foto')) {
+            $destinationPath = 'apalah/image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+
+            $user->name = ucwords(strtolower($request->name));
+            $user->username = strtolower($request->username);
+            $user->password = Hash::make($request->password);
+            $user->lahir = $request->lahir;
+            $user->jk = strtolower($request->jk);
+            $user->alamat = $request->alamat;
+            $user->hp = strtolower($request->hp);
+            $user->role = strtolower($request->role);
+            $user->foto = $profileImage;
+
+        } else {
+
+            $user->name = ucwords(strtolower($request->name));
+            $user->username = strtolower($request->username);
+            $user->password = Hash::make($request->password);
+            $user->lahir = $request->lahir;
+            $user->jk = strtolower($request->jk);
+            $user->alamat = $request->alamat;
+            $user->hp = strtolower($request->hp);
+            $user->role = strtolower($request->role);
+        }
 
         $simpan = $user->save();
 
         if($simpan){
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');
-            return redirect()->route('login');
+            return redirect()->route('pegawai');
         } else {
             Session::flash('errors', ['' => 'Register gagal! Silahkan ulangi beberapa saat lagi']);
             return redirect()->route('register');
