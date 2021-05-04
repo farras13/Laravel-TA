@@ -11,14 +11,17 @@ class Tanaman extends Model
     public $timestamps = false;
     protected $primaryKey = 'idTanaman';
     protected $fillable = [
+        'idTanaman',
         'idGen',
         'jk',
         'name',
+        'stok',
+        'status',
     ];
 
     public function gen()
     {
-        return $this->belongsTo('App\Models\gen');
+        return $this->belongsTo('App\Models\Gen', 'idGen');
     }
 
     public function persilangan()

@@ -48,8 +48,10 @@
                                     <td> {{ $per->status_pb }} </td>
                                     <td> {{ $per->status_trans }} </td>
                                     <td>
+                                        @if (Auth::user()->role == 2)
                                         <a href="{{ url('persilangan/edit', [$per->kodePersilangan]) }}">Edit</a>
                                         <a href="{{ url('persilangan/destroy', [$per->kodePersilangan]) }}">hapus</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

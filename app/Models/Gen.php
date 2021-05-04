@@ -16,6 +16,6 @@ class Gen extends Model
 
     public function tanaman()
     {
-        return $this->hasOne('App\Models\tanaman');
+        return $this->hasOne('App\Models\Tanaman');
     }
 }

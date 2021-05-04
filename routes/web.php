@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GudangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KebunController;
 use App\Http\Controllers\LabController;
@@ -35,8 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('persilangan/edit/{id}', [PersilanganController::class, 'edit']);
     Route::post('persilangan/update/{id}', [PersilanganController::class, 'update']);
     Route::get('persilangan/destroy/{id}', [PersilanganController::class, 'destroy']);
-
-    // Tanaman
 
     // Gen
     Route::get('gen', [HomeController::class, 'gen'])->name('gen');
@@ -97,6 +96,30 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('akun/destroy/{id}', [PegawaiController::class, 'destroy']);
 
     // inventory
+    Route::get('gudang', [GudangController::class, 'index'])->name('gudang');
+    Route::get('gudang/tambah', [GudangController::class, 'create']);
+    Route::post('gudang/add', [GudangController::class, 'add']);
+    Route::get('gudang/edit/{id}', [GudangController::class, 'edit']);
+    Route::get('gudang/detail/{id}', [GudangController::class, 'detail']);
+    Route::post('gudang/update/{id}', [GudangController::class, 'update']);
+    Route::get('gudang/destroy/{id}', [GudangController::class, 'destroy']);
+
+    // Masuk
+    Route::get('eksternal/in', [GudangController::class, 'eksin'])->name('eksin');
+    Route::get('eksternal/in/tambah', [GudangController::class, 'create2']);
+    Route::post('eksternal/in/add', [GudangController::class, 'add2']);
+    Route::get('eksternal/in/edit/{id}', [GudangController::class, 'edit2']);
+    Route::post('eksternal/in/update/{id}', [GudangController::class, 'update2']);
+    Route::get('eksternal/in/destroy/{id}', [GudangController::class, 'destroy2']);
+
+    // Keluar
+    Route::get('eksternal/out', [GudangController::class, 'eksout'])->name('eksout');
+    Route::get('eksternal/out/tambah', [GudangController::class, 'create3']);
+    Route::post('eksternal/out/add', [GudangController::class, 'add3']);
+    Route::get('eksternal/out/edit/{id}', [GudangController::class, 'edit3']);
+    Route::get('eksternal/out/getData/{id}', [GudangController::class, 'getData']);
+    Route::post('eksternal/out/update/{id}', [GudangController::class, 'update3']);
+    Route::get('eksternal/out/destroy/{id}', [GudangController::class, 'destroy3']);
 
     // penggajian
 

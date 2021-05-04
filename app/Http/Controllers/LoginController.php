@@ -101,36 +101,24 @@ class LoginController extends Controller
         }
 
         $user = new User();
-
+        $user->name = ucwords(strtolower($request->name));
+        $user->username = strtolower($request->username);
+        $user->password = Hash::make($request->password);
+        $user->lahir = $request->lahir;
+        $user->jk = strtolower($request->jk);
+        $user->alamat = $request->alamat;
+        $user->hp = strtolower($request->hp);
+        $user->role = strtolower($request->role);
 
         if ($image = $request->file('foto')) {
             $destinationPath = 'apalah/image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-
-            $user->name = ucwords(strtolower($request->name));
-            $user->username = strtolower($request->username);
-            $user->password = Hash::make($request->password);
-            $user->lahir = $request->lahir;
-            $user->jk = strtolower($request->jk);
-            $user->alamat = $request->alamat;
-            $user->hp = strtolower($request->hp);
-            $user->role = strtolower($request->role);
             $user->foto = $profileImage;
-
-        } else {
-
-            $user->name = ucwords(strtolower($request->name));
-            $user->username = strtolower($request->username);
-            $user->password = Hash::make($request->password);
-            $user->lahir = $request->lahir;
-            $user->jk = strtolower($request->jk);
-            $user->alamat = $request->alamat;
-            $user->hp = strtolower($request->hp);
-            $user->role = strtolower($request->role);
         }
 
         $simpan = $user->save();
+
 
         if($simpan){
             Session::flash('success', 'Register berhasil! Silahkan login untuk mengakses data');

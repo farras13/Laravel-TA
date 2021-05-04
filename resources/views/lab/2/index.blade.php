@@ -48,8 +48,10 @@
                                     <td>{{ $d->keterangan }}</td>
                                     <td>{{ $d->user['name'] }}</td>
                                     <td>
+                                        @if (Auth::user()->role == 1 || Auth::user()->role == 2)
                                         <a href="{{ url('trans2/edit', [$d->id_pt2]) }}">Edit</a>
                                         <a href="{{ url('trans2/destroy', [$d->id_pt2]) }}">hapus</a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
